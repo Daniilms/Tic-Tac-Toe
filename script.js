@@ -145,7 +145,7 @@ const getStyled = (quantityOfCells, cells) => {
     }
   }
   console.log(window.screen.availWidth);
-  /* cells.forEach((cell) => {
+  cells.forEach((cell) => {
     cell.addEventListener("mouseover", (evt) => {
       if (cell.dataset.content === "") {
         if (!isWhichPlayerTurn) {
@@ -161,7 +161,7 @@ const getStyled = (quantityOfCells, cells) => {
         });
       }
     });
-  }); */
+  });
 };
 
 const resetFunction = () => {
@@ -432,6 +432,10 @@ playButton.forEach((button) => {
 
 resetButton.addEventListener("click", () => {
   gameOver();
+  gameFieldListWrp.classList.add(
+    `game-field-list-wrp-mod`,
+    `game-field-list-wrp-mod-2`
+  );
   resetButton.disabled = true;
   setTimeout(() => {
     resetFunction();
