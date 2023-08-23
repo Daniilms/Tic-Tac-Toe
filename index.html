@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="game-wrp">
+          <div class="game-settings">
+            <button class="button game-settings-button" data-value="3">
+              3x3
+            </button>
+            <button class="button game-settings-button" data-value="4">
+              4x4
+            </button>
+            <button
+              disabled="true"
+              class="button game-settings-button game-settings-button-5"
+              data-value="5"
+            >
+              5x5
+            </button>
+          </div>
+          <h2 class="game-name">Tic-Tac-Toe</h2>
+          <div class="game-field">
+            <button class="button game-field-play-button">play</button>
+            <h2 class="game-field-score"></h2>
+            <h3 class="game-field-player-turn"></h3>
+            <div class="game-field-list-wrp">
+              <div class="game-field-list-winning-tape"></div>
+              <ul class="game-field-list"></ul>
+            </div>
+          </div>
+          <button class="button game-reset-button">reset</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
