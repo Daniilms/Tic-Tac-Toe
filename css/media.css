@@ -14,7 +14,25 @@
   .game-reset-button {
     margin: -90px 0 0 0;
   }
-  /* .cell-element {
-    width: 60px;
-  } */
+  .cell-element {
+    background-size: 80%;
+    height: 68px;
+    width: 68px;
+  }
+  .cell-element-mod-cross-2.cell-element::after {
+    left: 32px;
+    top: -10px;
+  }
+  .cell-element-mod-cross-3.cell-element::before {
+    left: 30px;
+    top: -10px;
+  }
+  .cell-element-mod-cross-4.cell-element::before {
+    left: 30px;
+    top: 0;
+  }
+  .cell-element-mod-cross-5.cell-element::before {
+    left: 30px;
+    top: 0;
+  }
 }

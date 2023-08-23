@@ -30,6 +30,7 @@ body {
   opacity: 0;
   cursor: pointer;
   clip-rule: inherit;
+  border-radius: 10px;
 }
 .cell-element::before {
   content: "";
@@ -39,6 +40,7 @@ body {
   opacity: 0;
   cursor: pointer;
   clip-rule: inherit;
+  border-radius: 10px;
 }
 
 .cell-element-mod-cross.cell-element::after {
@@ -56,10 +58,8 @@ body {
   background-color: #da7b93;
   transform: rotate(-45deg);
   opacity: 1;
-  left: 40px;
-  top: -15px;
-  border-radius: 10px;
-  clip-rule: inherit;
+  left: 42px;
+  top: -12px;
 }
 .cell-element-mod-cross-3.cell-element::before {
   width: 10%;
@@ -68,7 +68,7 @@ body {
   transform: rotate(45deg);
   opacity: 1;
   left: 40px;
-  top: -15px;
+  top: -13px;
 }
 .cell-element-mod-cross-4.cell-element::before {
   width: 10%;
