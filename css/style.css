@@ -166,14 +166,22 @@ body {
   cursor: no-drop;
   background-color: transparent;
 }
+.game-field-play-button-wrp {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .game-field-play-button {
   width: 50%;
   filter: opacity(100%);
   text-align: center;
   position: relative;
-  /*  padding: 5% 40%; */
   opacity: 1;
   transition: all ease-in-out 0.4s;
+}
+.game-field-play-button:last-child {
+  margin: 0 0 0 30px;
 }
 .game-field-play-button-invisible {
   filter: opacity(0);
@@ -196,7 +204,7 @@ body {
   position: absolute;
   width: 142%;
   height: 20%;
-  background-image: url("img/warning-tape.svg");
+  background-image: url("../img/warning-tape.svg");
   background-repeat: no-repeat;
   background-size: 80%;
   opacity: 1;
@@ -408,6 +416,7 @@ body {
 .game-field-score {
   color: #da7b93;
   transition: all ease-in-out 0.4s;
+  margin: -100px 0 0 0;
 }
 .game-field-score-modifier {
   opacity: 1;

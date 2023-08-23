@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media.css" />
     <script defer src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,11 +37,20 @@
           </div>
           <h2 class="game-name">Tic-Tac-Toe</h2>
           <div class="game-field">
-            <button class="button game-field-play-button">play</button>
+            <div class="game-field-play-button-wrp">
+              <button
+                class="button game-field-play-button"
+                data-content="Cross"
+              >
+                Cross
+              </button>
+              <button class="button game-field-play-button" data-content="Zero">
+                Zero
+              </button>
+            </div>
             <h2 class="game-field-score"></h2>
             <h3 class="game-field-player-turn"></h3>
             <div class="game-field-list-wrp">
-              <div class="game-field-list-winning-tape"></div>
               <ul class="game-field-list"></ul>
             </div>
           </div>
