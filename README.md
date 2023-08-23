@@ -10,7 +10,7 @@ The application is still under development, I plan to refine it further.
 
 ## Live version
 
-You can try Tic-Tac-Toe Game online at: .
+You can try Tic-Tac-Toe Game online at: https://daniilms.github.io/Tic-Tac-Toe/ .
 
 ## Running localy
 
