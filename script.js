@@ -391,14 +391,6 @@ const isGame = () => {
   if (allMoves.length !== 0) {
     isGameStarted = true;
   }
-  styleCells();
-};
-const styleCells = () => {
-  findAllCells().forEach((cell) => {
-    cell.addEventListener("mouseEnter", (evt) => {
-      evt.target.style.backgroundColor = "yellow";
-    });
-  });
 };
 playButton.forEach((button) => {
   button.addEventListener(
