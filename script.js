@@ -144,7 +144,8 @@ const getStyled = (quantityOfCells, cells) => {
       cells[i].style.borderBottom = "none";
     }
   }
-  cells.forEach((cell) => {
+  console.log(window.screen.availWidth);
+  /* cells.forEach((cell) => {
     cell.addEventListener("mouseover", (evt) => {
       if (cell.dataset.content === "") {
         if (!isWhichPlayerTurn) {
@@ -160,7 +161,7 @@ const getStyled = (quantityOfCells, cells) => {
         });
       }
     });
-  });
+  }); */
 };
 
 const resetFunction = () => {

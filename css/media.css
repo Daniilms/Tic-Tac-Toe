@@ -33,13 +33,22 @@
     z-index: -2;
     border: none;
   }
+  .cell-element-mod-cross.cell-element::after {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    z-index: -2;
+    border: none;
+  }
   .cell-element::after {
     opacity: 0;
     border: none;
+    background-color: transparent;
   }
   .cell-element::before {
     opacity: 0;
     border: none;
+    background-color: transparent;
   }
   .cell-element-mod-cross-2.cell-element::after {
     left: 32px;
