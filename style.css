@@ -1,0 +1,414 @@
+body {
+  font-family: "Roboto Mono", monospace;
+  box-sizing: border-box;
+  background-color: #2f4454;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.cell-element {
+  position: relative;
+  font-size: 60px;
+  width: 90px;
+  height: 90px;
+  border: 2px solid #376e6f;
+  text-align: center;
+  list-style-type: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all ease-in-out 0.4s;
+  cursor: pointer;
+}
+.cell-element::after {
+  content: "";
+  position: absolute;
+  background-color: black;
+  transition: opacity ease-in-out 0.4s;
+  opacity: 0;
+  cursor: pointer;
+  clip-rule: inherit;
+}
+.cell-element::before {
+  content: "";
+  position: absolute;
+  background-color: black;
+  transition: opacity ease-in-out 0.4s;
+  opacity: 0;
+  cursor: pointer;
+  clip-rule: inherit;
+}
+
+.cell-element-mod-cross.cell-element::after {
+  width: 10%;
+  height: 100%;
+  background-color: black;
+  transform: rotate(45deg);
+  opacity: 0.5;
+  left: 40px;
+  top: 0;
+}
+.cell-element-mod-cross-2.cell-element::after {
+  width: 10%;
+  height: 130%;
+  background-color: #da7b93;
+  transform: rotate(-45deg);
+  opacity: 1;
+  left: 40px;
+  top: -15px;
+  border-radius: 10px;
+  clip-rule: inherit;
+}
+.cell-element-mod-cross-3.cell-element::before {
+  width: 10%;
+  height: 130%;
+  background-color: #da7b93;
+  transform: rotate(45deg);
+  opacity: 1;
+  left: 40px;
+  top: -15px;
+}
+.cell-element-mod-cross-4.cell-element::before {
+  width: 10%;
+  height: 100%;
+  background-color: #da7b93;
+  transform: rotate(0);
+  opacity: 1;
+  left: 40px;
+  top: 0;
+}
+.cell-element-mod-cross-5.cell-element::before {
+  width: 10%;
+  height: 100%;
+  background-color: #da7b93;
+  transform: rotate(90deg);
+  opacity: 1;
+  left: 40px;
+  top: 0;
+}
+.cell-element-mod-cross.cell-element::before {
+  width: 10%;
+  height: 100%;
+  background-color: black;
+  transform: rotate(-45deg);
+  opacity: 0.5;
+  left: 40px;
+  top: 0;
+}
+
+.cell-element-mod-zero.cell-element::after {
+  width: 65%;
+  height: 65%;
+  background-color: transparent;
+  border: 8px solid white;
+  border-radius: 50px;
+  opacity: 0.5;
+  left: 9px;
+  top: 7px;
+}
+
+.game-wrp {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.game-name {
+  text-align: center;
+  color: #da7b93;
+  transition: all ease-in-out 0.6s;
+  white-space: nowrap;
+  width: 40%;
+}
+.game-name-modifier {
+  width: 0;
+  opacity: 0;
+}
+.game-name {
+  color: #da7b93;
+}
+.game-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  width: 60%;
+  border-radius: 15px;
+  padding: 20px 40px;
+  background-color: #1c3334;
+  transition: all ease-in-out 0.4s;
+}
+.game-field-modifier {
+  flex-direction: column;
+  height: 60vh;
+}
+.button {
+  font-size: 20px;
+  color: white;
+  background-color: transparent;
+  border: 2px solid #da7b93;
+  border-radius: 10px;
+  padding: 15px 25px;
+  font-weight: 400;
+  transition: background-color ease-in-out 0.4s;
+}
+.button:hover {
+  cursor: pointer;
+  background-color: #da7b93;
+}
+.button:disabled {
+  opacity: 0.5;
+}
+.button:disabled:hover {
+  cursor: no-drop;
+  background-color: transparent;
+}
+.game-field-play-button {
+  width: 50%;
+  filter: opacity(100%);
+  text-align: center;
+  position: relative;
+  /*  padding: 5% 40%; */
+  opacity: 1;
+  transition: all ease-in-out 0.4s;
+}
+.game-field-play-button-invisible {
+  filter: opacity(0);
+  z-index: -1;
+}
+.game-settings {
+  margin: 0 0 -40px 0;
+}
+.game-settings-button {
+  opacity: 0;
+}
+
+.game-settings-button:last-child {
+  position: relative;
+  opacity: 0;
+  transition: all ease-in-out 0.4s;
+}
+.game-settings-button:last-child::after {
+  content: "";
+  position: absolute;
+  width: 142%;
+  height: 20%;
+  background-image: url("img/warning-tape.svg");
+  background-repeat: no-repeat;
+  background-size: 80%;
+  opacity: 1;
+  z-index: 2;
+  transform: rotate(30deg);
+  top: 27px;
+  left: -6px;
+}
+.game-settings-button:last-child:disabled {
+}
+.game-settings-button:last-child::before {
+  content: "Not working yet!";
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  text-align: center;
+  white-space: nowrap;
+  width: 200%;
+  height: 80%;
+  background-color: white;
+  top: -75px;
+  left: 60px;
+  padding: 15px 0 0 0;
+  border-radius: 10px;
+  opacity: 0;
+  transition: all ease-in-out 0.4s;
+}
+.game-settings-button:last-child:hover.game-settings-button:last-child::before {
+  opacity: 1;
+}
+.game-settings-button-modifier {
+  opacity: 1;
+  transition: all ease-in-out 0.4s;
+}
+.game-field-list {
+  position: relative;
+  display: grid;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  transition: all ease-in-out 0.4s;
+  opacity: 0;
+}
+.game-field-list-modifier {
+  opacity: 1;
+}
+.game-field-list::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  /* background-color: black; */
+  z-index: -1;
+  opacity: 1;
+}
+.game-field-list::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  z-index: -2;
+}
+.game-field-list::before {
+  content: "";
+  position: absolute;
+  width: 34%;
+  height: 10%;
+  z-index: -1;
+  opacity: 0;
+  background-color: #da7b93;
+  transition: width ease-in-out 0.4s, opacity ease-in-out 0.4s;
+}
+.game-field-list-row-win.game-field-list::before {
+  width: 100%;
+}
+.game-field-list-modifier-2.game-field-list::after {
+  z-index: 1;
+}
+
+/* .game-field-list::after {
+  content: "";
+  position: absolute;
+  background-color: #da7b93;
+  width: 30%;
+  height: 5%;
+  left: 5px;
+  top: 39px;
+  opacity: 1;
+  opacity: 0;
+  transition: top ease-in-out 0.4s, left ease-in-out 0.9s,
+    width ease-in-out 0.4s;
+} */
+/* .game-field-win-deg-1.game-field-list::after {
+  transform: rotate(45deg);
+  top: 130px;
+  left: -45px;
+  width: 130%;
+  opacity: 1;
+} */
+/* .game-field-win-deg-2.game-field-list::after {
+  transform: rotate(-45deg);
+  width: 130%;
+  left: -40px;
+  top: 130px;
+  opacity: 1;
+} */
+/* .game-field-list::before {
+  content: "Loading...";
+  position: absolute;
+  font-size: 20px;
+  color: white;
+  width: 100%;
+  height: 20%;
+  top: 45%;
+  left: 30%;
+  opacity: 0;
+  z-index: -1;
+  display: none;
+}
+.game-field-mod-before.game-field-list::before {
+  opacity: 1;
+  z-index: 1;
+}
+.game-field-mod.game-field-list::after {
+  opacity: 0.5;
+  display: block;
+} */
+.game-field-list-wrp {
+  position: relative;
+}
+.game-field-list-winning-tape {
+  position: absolute;
+  width: 34%;
+  height: 10%;
+  background-color: #da7b93;
+  top: 35px;
+  opacity: 0;
+  z-index: -1;
+  transition: all ease-in-out 0.4s;
+}
+.game-field-list-winning-tape-modifier {
+  width: 100%;
+  z-index: 1;
+  opacity: 1;
+}
+.game-field-list-wrp::after {
+  content: "";
+  width: 100%;
+  height: 0;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  opacity: 0.5;
+  z-index: -1;
+  transition: all ease-in-out 0.5s;
+}
+.game-field-list-wrp::before {
+  content: "Loading...";
+  font-size: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  z-index: -1;
+  transition: all ease-in-out 0.4s;
+}
+.game-field-list-wrp-mod.game-field-list-wrp::after {
+  height: 100%;
+  z-index: 1;
+  opacity: 0.5;
+}
+.game-field-list-wrp-mod-2.game-field-list-wrp::before {
+  z-index: 2;
+  opacity: 1;
+}
+.game-reset-button {
+  position: relative;
+  opacity: 0;
+  z-index: -1;
+  background-color: transparent;
+  color: white;
+  border: 2px solid #da7b93;
+  font-weight: 400;
+  margin: -70px;
+  text-align: center;
+  transition: all ease-in-out 0.4s;
+}
+
+.game-reset-button-modifier {
+  position: relative;
+  opacity: 1;
+  z-index: 1;
+}
+.game-field-player-turn {
+  color: #da7b93;
+  opacity: 0;
+  transition: all ease-in-out 0.4s;
+}
+.game-field-player-turn-modifier {
+  opacity: 1;
+}
+.game-field-score {
+  color: #da7b93;
+  transition: all ease-in-out 0.4s;
+}
+.game-field-score-modifier {
+  opacity: 1;
+}
