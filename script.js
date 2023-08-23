@@ -6,8 +6,8 @@ const settingsButtons = document.querySelectorAll(".game-settings-button");
 const score = document.querySelector(".game-field-score");
 const playerTurnHeader = document.querySelector(".game-field-player-turn");
 const resetButton = document.querySelector(".game-reset-button");
-const playButton = document.querySelector(".game-field-play-button");
-const winTape = document.querySelector(".game-field-list-winning-tape");
+const playButton = document.querySelectorAll(".game-field-play-button");
+const playButtonWrp = document.querySelector(".game-field-play-button-wrp");
 let isWhichPlayerTurn = false;
 let isGameStarted = false;
 let xWins = 0;
@@ -55,7 +55,6 @@ const playerMove = () => {
           evt.target.style.backgroundImage = `url(img/circle.svg)`;
         }
 
-        /* test(); */
         getValidate();
         writeWhichPlayerTurn();
         allMoves.push(evt.target.dataset.content);
@@ -91,7 +90,6 @@ const whoWins = () => {
     isWhichPlayerTurn = false;
   }
   score.textContent = `${xWins} : ${zeroWins}`;
-  /*  winningCombo(); */
 };
 const checkForEven = (number) => {
   if (number === 1) {
@@ -124,11 +122,7 @@ const checkForDataContent = () => {
 
   return data;
 };
-function test() {
-  for (let i = 0; i < returnSize() * returnSize(); i++) {
-    findAllCells()[i].textContent = i;
-  }
-}
+
 const getValidate = () => {
   if (checkForWin()) {
     resetButton.disabled = true;
@@ -182,7 +176,6 @@ const resetFunction = () => {
 const gameOver = () => {
   gameField.classList.add("game-field-list-modifier-2");
   setTimeout(() => {
-    winTape.classList.remove("game-field-list-winning-tape-modifier");
     gameFieldListWrp.classList.add(
       `game-field-list-wrp-mod`,
       `game-field-list-wrp-mod-2`
@@ -297,7 +290,6 @@ const checkForWin = (evt) => {
           }
         }
       }
-      /* array[i - 1][array.length - v - i].style.backgroundColor = "red"; */
       if (
         array[i - 1][array.length - v - i].dataset.content ===
           array[array.length - 1][0].dataset.content &&
@@ -337,41 +329,6 @@ const checkForWin = (evt) => {
 
     return false;
   }
-  /* if (
-      array[v][v].dataset.content === array[v + 1][v + 1].dataset.content &&
-      array[v][v].dataset.content !== "" &&
-      array[size - v - 1][size - v - 1].dataset.content ===
-        array[v][v].dataset.content &&
-      array[size - v - 1][size - v - 1].dataset.content ===
-        array[size - v - 2][size - v - 2].dataset.content &&
-      array[size - v - 2][size - v - 2].dataset.content ===
-        array[size - v - 3][size - v - 3].dataset.content &&
-      array[v][v].dataset.content !== "" &&
-      array[size - v - 1][size - v - 1].dataset.content ===
-        array[v + 1][v + 1].dataset.content
-    ) {
-      quantityOfDiagonalTruesReturned++;
-      if (diagonal1Win) {
-      } else {
-      }
-      action = "diagonal1Win";
-
-      winningCombo(winningComboArray, array, action, diagonal1Win);
-    } else {
-      diagonal1Win = false;
-    } */
-
-  /*  if (
-      array[v][size - 1].dataset.content ===
-        array[v + 1][size - v - 2].dataset.content &&
-      array[size - 1][v].dataset.content ===
-        array[v][size - 1].dataset.content &&
-      array[size - 1][v].dataset.content !== ""
-    ) {
-      diagonal2Win = true;
-    } else {
-      diagonal2Win = false;
-    } */
 };
 
 const winningCombo = (winArray, allMoves, action, actionValue) => {
@@ -397,21 +354,17 @@ const winningCombo = (winArray, allMoves, action, actionValue) => {
           );
         }, index * 200);
       } else {
-        /* allMoves[k][k + index].style.backgroundColor = "red"; */
         setTimeout(() => {
           allMoves[k][k + index].classList.add("cell-element-mod-cross-5");
         }, index * 200);
       }
     }
     if (action === "diagonal1Win" && actionValue) {
-      /* allMoves[index][index].style.backgroundColor = "red"; */
       setTimeout(() => {
         allMoves[index][index].classList.add("cell-element-mod-cross-2");
       }, index * 200);
-      /* gameField.classList.add("game-field-win-deg-1"); */
     }
     if (action === "diagonal2Win" && actionValue) {
-      /* gameField.classList.add("game-field-win-deg-2"); */
       setTimeout(() => {
         allMoves[index][allMoves.length - index - 1].classList.add(
           "cell-element-mod-cross-3"
@@ -447,36 +400,43 @@ const styleCells = () => {
     });
   });
 };
-playButton.addEventListener(
-  "click",
-  () => {
-    playButton.classList.add("game-field-play-button-invisible");
-    gameName.classList.add("game-name-modifier");
-
-    setTimeout(() => {
-      gameFieldWrp.classList.add("game-field-modifier");
-    }, 1000);
-    for (let i = 0; i < settingsButtons.length; i++) {
+playButton.forEach((button) => {
+  button.addEventListener(
+    "click",
+    () => {
+      if (button.dataset.content === "Cross") {
+        isWhichPlayerTurn = false;
+      } else {
+        isWhichPlayerTurn = true;
+      }
+      gameName.classList.add("game-name-modifier");
+      playButtonWrp.classList.add("game-field-play-button-invisible");
       setTimeout(() => {
-        settingsButtons[i].classList.add("game-settings-button-modifier");
-      }, 400 * i);
-    }
-    setTimeout(() => {
-      settingsButtons[settingsButtons.length - 1].style.opacity = "0.5";
-    }, 800);
-    setTimeout(() => {
-      score.textContent = `0 : 0`;
-      writeWhichPlayerTurn();
-      isGame();
-      createGameField(3);
-      gameField.classList.add("game-field-list-modifier");
-      playerTurnHeader.classList.add("game-field-player-turn-modifier");
-      score.classList.add("game-field-score-modifier");
-      resetButton.classList.add("game-reset-button-modifier");
-    }, 1400);
-  },
-  { once: true }
-);
+        gameFieldWrp.classList.add("game-field-modifier");
+      }, 1000);
+      for (let i = 0; i < settingsButtons.length; i++) {
+        setTimeout(() => {
+          settingsButtons[i].classList.add("game-settings-button-modifier");
+        }, 400 * i);
+      }
+      setTimeout(() => {
+        settingsButtons[settingsButtons.length - 1].style.opacity = "0.5";
+      }, 800);
+      setTimeout(() => {
+        score.textContent = `0 : 0`;
+        writeWhichPlayerTurn();
+        isGame();
+        createGameField(3);
+        gameField.classList.add("game-field-list-modifier");
+        playerTurnHeader.classList.add("game-field-player-turn-modifier");
+        score.classList.add("game-field-score-modifier");
+        resetButton.classList.add("game-reset-button-modifier");
+      }, 1400);
+    },
+    { once: true }
+  );
+});
+
 resetButton.addEventListener("click", () => {
   gameOver();
   resetButton.disabled = true;
@@ -500,8 +460,6 @@ settingsButtons.forEach((button) => {
         gameField.classList.add("game-field-list-modifier");
         playerTurnHeader.classList.add("game-field-player-turn-modifier");
         score.classList.add("game-field-score-modifier");
-
-        /* game - field - player - turn - modifier; */
       }, 1400);
       createGameField(evt.target.dataset.value);
     }
