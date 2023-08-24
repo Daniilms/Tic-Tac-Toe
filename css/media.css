@@ -5,11 +5,12 @@
   .game-field {
     width: 80%;
     height: 10vh;
+    padding: 15% 40px;
   }
   .game-field-modifier {
     flex-direction: column;
     height: 70vh;
-    max-height: 100vh;
+    max-height: 100%;
   }
   .game-settings {
     margin: 0 0 -12% 0;
