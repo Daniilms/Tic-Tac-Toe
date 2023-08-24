@@ -54,7 +54,6 @@ const playerMove = () => {
     el.addEventListener(
       `${isPC}`,
       (evt) => {
-        console.log(isPC);
         if (!isWhichPlayerTurn && evt.target.textContent === "") {
           isWhichPlayerTurn = true;
           evt.target.dataset.content = "cross";
@@ -229,7 +228,6 @@ const checkForWin = (evt) => {
       } else {
         quantityIfTotalTruesReturned++;
         action = "rowWin";
-        console.log(quantityIfTotalTruesReturned);
         if (returnSize() === 4) {
           if (rowWin && quantityIfTotalTruesReturned > 2) {
             returnedFunc++;
@@ -465,7 +463,6 @@ resetButton.addEventListener("click", () => {
 
 settingsButtons.forEach((button) => {
   button.addEventListener("click", (evt) => {
-    console.log(evt.target.dataset.value);
     document.querySelectorAll(".cell-element").forEach((el) => {
       if (!isGameStarted) {
         el.remove();
