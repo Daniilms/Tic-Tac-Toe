@@ -1,18 +1,32 @@
 @media (max-width: 635px) {
+  .container {
+    overflow-x: hidden;
+  }
   .game-field {
-    width: 70vw;
+    width: 100%;
+    max-width: 80%;
+    height: 70vh;
+    max-height: 100%;
+  }
+  .game-field-modifier {
+    flex-direction: column;
+    height: 70vh;
+    max-height: 100%;
   }
   .game-settings {
     margin: 0 0 -12% 0;
   }
+  .game-field-list-wrp {
+    margin: 0 0 20px 0;
+  }
   .game-field-score {
-    margin: -140px 0 0 0;
+    margin: 10% 0 0 0;
   }
   .game-field-play-button {
     width: 100vw;
   }
   .game-reset-button {
-    margin: -90px 0 0 0;
+    margin: 0 0 55px 0;
   }
   .cell-element {
     background-size: 80%;

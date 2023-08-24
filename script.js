@@ -13,8 +13,17 @@ let isGameStarted = false;
 let xWins = 0;
 let zeroWins = 0;
 let allMoves = [];
+let isPC = "click";
 
 resetButton.disabled = true;
+
+if (
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+    navigator.userAgent
+  )
+) {
+  isPC = "touchend";
+}
 
 const createGameCell = () => {
   const oneCell = document.createElement("li");
@@ -43,8 +52,9 @@ const playerMove = () => {
   findAllCells().forEach((el) => {
     el.dataset.content = "";
     el.addEventListener(
-      "click",
+      `${isPC}`,
       (evt) => {
+        console.log(isPC);
         if (!isWhichPlayerTurn && evt.target.textContent === "") {
           isWhichPlayerTurn = true;
           evt.target.dataset.content = "cross";
@@ -219,10 +229,19 @@ const checkForWin = (evt) => {
       } else {
         quantityIfTotalTruesReturned++;
         action = "rowWin";
-        if (rowWin && quantityIfTotalTruesReturned > 1) {
-          returnedFunc++;
-          winningComboArray.push([k, j]);
-          winningCombo(winningComboArray, array, action, rowWin);
+        console.log(quantityIfTotalTruesReturned);
+        if (returnSize() === 4) {
+          if (rowWin && quantityIfTotalTruesReturned > 2) {
+            returnedFunc++;
+            winningComboArray.push([k, j]);
+            winningCombo(winningComboArray, array, action, rowWin);
+          }
+        } else {
+          if (rowWin && quantityIfTotalTruesReturned > 1) {
+            returnedFunc++;
+            winningComboArray.push([k, j]);
+            winningCombo(winningComboArray, array, action, rowWin);
+          }
         }
       }
       if (
@@ -347,11 +366,10 @@ const winningCombo = (winArray, allMoves, action, actionValue) => {
     }
     if (action === "rowWin" && actionValue) {
       let k = winArray[0][0];
+
       if (k > 0) {
         setTimeout(() => {
-          allMoves[k][returnSize() - 1 - index].classList.add(
-            "cell-element-mod-cross-5"
-          );
+          allMoves[k][index].classList.add("cell-element-mod-cross-5");
         }, index * 200);
       } else {
         setTimeout(() => {
@@ -413,6 +431,7 @@ playButton.forEach((button) => {
       }
       setTimeout(() => {
         settingsButtons[settingsButtons.length - 1].style.opacity = "0.5";
+        /* settingsButtons[settingsButtons.length - 1].disabled = "false"; */
       }, 800);
       setTimeout(() => {
         score.textContent = `0 : 0`;
@@ -446,6 +465,7 @@ resetButton.addEventListener("click", () => {
 
 settingsButtons.forEach((button) => {
   button.addEventListener("click", (evt) => {
+    console.log(evt.target.dataset.value);
     document.querySelectorAll(".cell-element").forEach((el) => {
       if (!isGameStarted) {
         el.remove();
