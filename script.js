@@ -209,7 +209,8 @@ const checkForWin = (evt) => {
     let elem = copyAllMoves.splice(0, size);
     array.push(elem);
   }
-  let quantityIfTotalTruesReturned = 0;
+  let quantityOfTotalTruesReturned = 0;
+  let quantityOfTotalTruesReturned2 = 0;
   let returnedFunc = 0;
 
   // проверка по горизонтали и вертикали
@@ -226,16 +227,16 @@ const checkForWin = (evt) => {
       ) {
         rowWin = false;
       } else {
-        quantityIfTotalTruesReturned++;
+        quantityOfTotalTruesReturned++;
         action = "rowWin";
         if (returnSize() === 4) {
-          if (rowWin && quantityIfTotalTruesReturned > 2) {
+          if (rowWin && quantityOfTotalTruesReturned > 2) {
             returnedFunc++;
             winningComboArray.push([k, j]);
             winningCombo(winningComboArray, array, action, rowWin);
           }
         } else {
-          if (rowWin && quantityIfTotalTruesReturned > 1) {
+          if (rowWin && quantityOfTotalTruesReturned > 1) {
             returnedFunc++;
             winningComboArray.push([k, j]);
             winningCombo(winningComboArray, array, action, rowWin);
@@ -252,10 +253,13 @@ const checkForWin = (evt) => {
       ) {
         colWin = false;
       } else {
-        quantityIfTotalTruesReturned++;
-
+        quantityOfTotalTruesReturned2++;
+        console.log(
+          quantityOfTotalTruesReturned,
+          quantityOfTotalTruesReturned2
+        );
         if (
-          quantityIfTotalTruesReturned > 1 &&
+          quantityOfTotalTruesReturned2 > 1 &&
           colWin &&
           array[j][k].dataset.content ===
             array[array.length - j - 1][k].dataset.content
@@ -275,6 +279,7 @@ const checkForWin = (evt) => {
 
   for (let v = 0; v < size; v++) {
     let diagonalWin = 0;
+    let diagonalWin2 = 0;
     let diagonal1Win = false;
     let diagonal2Win = false;
     for (let i = 1; i < size; i++) {
@@ -314,16 +319,16 @@ const checkForWin = (evt) => {
         array[array.length - 1][0].dataset.content ===
           array[array.length - 2][1].dataset.content
       ) {
-        diagonalWin++;
+        diagonalWin2++;
         if (size === 3) {
-          if (diagonalWin === size - 1) {
+          if (diagonalWin2 === size - 1) {
             diagonal2Win = true;
             action = "diagonal2Win";
             winningCombo(winningComboArray, array, action, diagonal2Win);
           }
         }
         if (size === 4) {
-          if (diagonalWin === size - 1) {
+          if (diagonalWin2 === size - 1) {
             diagonal2Win = true;
 
             action = "diagonal2Win";
